@@ -10,8 +10,12 @@ def main():
         create_conversation_tab()
         create_vocab_tab()
     
-    # 启动应用
-    language_mentor_app.launch(share=True, server_name="0.0.0.0")
+    # 启动应用，使用环境变量配置
+    language_mentor_app.launch(
+        server_name="0.0.0.0",  # 允许外部访问
+        server_port=7860,       # 明确指定端口
+        share=False             # 在容器中运行时不需要share
+    )
 
 if __name__ == "__main__":
     main()
